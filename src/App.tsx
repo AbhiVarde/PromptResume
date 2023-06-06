@@ -104,9 +104,9 @@ const ResumeGenerator = () => {
         >
           Generate Resume
         </button>
-        {error && <p className="text-red-500 mt-4">{error}</p>}
-        <pre className="mt-8 border border-gray-300 bg-slate-100 p-4 rounded-md text-sm overflow-x-auto">
-          {resume}
+        {error && <p className="text-red-500 my-2">{error}</p>}
+        <pre className="mt-4 h-[350px] border border-gray-300 bg-slate-100 p-4 rounded-md text-sm overflow-x-auto">
+          {resume || "No resume generated."}
         </pre>
       </div>
       <footer className="text-center my-4 text-gray-500">
