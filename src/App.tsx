@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
-const ResumeGenerator: React.FC = () => {
+const ResumeGenerator = () => {
   const [resume, setResume] = useState("");
   const [userType, setUserType] = useState("");
   const [yearsOfExperience, setYearsOfExperience] = useState(0);
+  const [error, setError] = useState("");
 
   const generateResume = async () => {
     let prompt = "";
@@ -46,7 +47,13 @@ const ResumeGenerator: React.FC = () => {
       );
 
       setResume(response.data.choices[0].text.trim());
-    } catch (error) {
+      setError("");
+    } catch (error: any) {
+      if (error.response && error.response.status === 429) {
+        setError("Too many requests. Please try again later.");
+      } else {
+        setError("An error occurred. Please try again.");
+      }
       console.error("Error:", error);
     }
   };
@@ -97,6 +104,7 @@ const ResumeGenerator: React.FC = () => {
         >
           Generate Resume
         </button>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
         <pre className="mt-8 border border-gray-300 bg-slate-100 p-4 rounded-md text-sm overflow-x-auto">
           {resume}
         </pre>
