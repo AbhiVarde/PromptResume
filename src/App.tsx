@@ -8,6 +8,7 @@ const ResumeGenerator = () => {
   const [userType, setUserType] = useState("");
   const [yearsOfExperience, setYearsOfExperience] = useState(0);
   const [error, setError] = useState("");
+  const currentYear = new Date().getFullYear();
 
   const generateResume = async () => {
     let prompt = "";
@@ -110,7 +111,7 @@ const ResumeGenerator = () => {
         </pre>
       </div>
       <footer className="text-center my-4 text-gray-500">
-        © 2023 AbhiVarde - Made with ❤️ for the people of the internet.
+        © {currentYear} AbhiVarde - Made with ❤️ for the people of the internet.
       </footer>
     </div>
   );
