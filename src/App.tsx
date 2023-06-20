@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const ResumeGenerator = () => {
   const [resume, setResume] = useState("");
